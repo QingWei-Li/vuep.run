@@ -2,7 +2,7 @@
   "name": "vuep.run",
   "version": "1.0.0",
   "private": true,
-  "description": "🖖😇 Online SFCs editor for Vue",
+  "description": "🏃 Online SFCs editor for Vue",
   "main": "src/main.js",
   "scripts": {
     "dev": "poi",
@@ -22,8 +22,10 @@
       "query-string",
       "strict-uri-encode",
       "parse-package-name"
-    ]
+    ],
+    "homepage": "/"
   },
+  "homepage": "https://vuep.run",
   "dependencies": {
     "@emmetio/codemirror-plugin": "^0.5.0",
     "codemirror": "^5.36.0",

@@ -58,8 +58,6 @@ export default {
         )}`;
       }
 
-      console.log(url);
-
       if (/github\.com\//.test(url)) {
         url = url
           .replace(/github\.com\//, 'raw.githubusercontent.com/')

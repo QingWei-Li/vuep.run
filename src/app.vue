@@ -66,7 +66,7 @@ export default {
 
       pkgs.forEach(pkg => {
         scripts.push(
-          `<script src=//bundle.run/${pkg.module}${pkg.path}?name=${
+          `<script src=//packd.now.sh/${pkg.module}${pkg.path}?name=${
             pkg.name
           }><\/script>`
         );
