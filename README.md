@@ -4,7 +4,7 @@
 
 website: https://vuep.run
 
-![image](https://user-images.githubusercontent.com/7565692/38118769-a45ff940-33ef-11e8-99a9-0b44a65fef8f.png)
+![image](https://user-images.githubusercontent.com/7565692/38118819-ecd05922-33ef-11e8-901d-f9bda9ab71ab.png)
 
 ## Features
 
