@@ -47,10 +47,17 @@ export default {
       }
       const imports = [];
       const { template, script, styles } = parseComponent(code);
-      const compiled = window.Babel.transform(script.content, {
-        presets: ['es2015'],
-        plugins: [[getImports, { imports }]]
-      });
+      let compiled;
+
+      try {
+        compiled = window.Babel.transform(script.content, {
+          presets: ['es2015', 'es2016', 'es2017', 'stage-0'],
+          plugins: [[getImports, { imports }]]
+        });
+      } catch (e) {
+        this.preview = `<pre style="color: red">${e.message}</pre>`;
+        return;
+      }
 
       const heads = this.genHeads();
       const pkgs = [];
@@ -87,7 +94,7 @@ export default {
       };
     },
 
-    getPkgs(str) {
+    getArr(str) {
       if (Array.isArray(str)) {
         return str;
       }
@@ -106,14 +113,19 @@ export default {
     },
 
     genHeads() {
+      let heads = [];
       const query = queryParse(location.search);
-      const pkgs = this.getPkgs(query.pkg);
+      const pkgs = this.getArr(query.pkg);
+      const styles = this.getArr(query.css);
       const cdn = CDN_MAP[query.cdn] || query.cdn || CDN_MAP.unpkg;
       const vue = this.getVue(query.vue);
 
       pkgs.unshift(vue);
 
-      return pkgs.map(pkg => `<script src=${cdn}${pkg}><\/script>`);
+      return [].concat(
+        pkgs.map(pkg => `<script src=${cdn}${pkg}><\/script>`),
+        styles.map(style => `<link rel=stylesheet href=${cdn}${style}>`)
+      );
     }
   }
 };

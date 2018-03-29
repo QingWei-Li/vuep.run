@@ -47,11 +47,18 @@ export default {
       let url;
       if (isAbsouteUrl(filename)) {
         url = filename;
+      } else if (/^[\w-]+\.\w+/.test(filename)) {
+        url = '//' + filename;
       } else {
         // convert url to github raw url
         const repo = filename.match(/^([^\/]+\/[^\/]+)(\S+)$/);
-        url = `//raw.githubusercontent.com/${repo[1]}/master${repo[2]}`;
+        url = `//raw.githubusercontent.com/${repo[1]}/master${repo[2].replace(
+          /\/blob\//,
+          '/'
+        )}`;
       }
+
+      console.log(url);
 
       if (/github\.com\//.test(url)) {
         url = url
