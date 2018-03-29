@@ -1,0 +1,45 @@
+{
+  "name": "vuep.run",
+  "version": "1.0.0",
+  "private": true,
+  "description": "🖖😇 Online SFCs editor for Vue",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "poi",
+    "build": "poi build"
+  },
+  "keywords": ["vue", "editor"],
+  "author": "",
+  "license": "MIT",
+  "poi": {
+    "devServer": {
+      "historyApiFallback": {
+        "disableDotRule": true
+      }
+    },
+    "transformModules": [
+      "@emmetio",
+      "query-string",
+      "strict-uri-encode",
+      "parse-package-name"
+    ]
+  },
+  "dependencies": {
+    "@emmetio/codemirror-plugin": "^0.5.0",
+    "codemirror": "^5.36.0",
+    "is-absolute-url": "^2.1.0",
+    "parse-package-name": "^0.1.0",
+    "query-string": "^6.0.0",
+    "throttle-debounce": "^1.0.1",
+    "unfetch": "^3.0.0",
+    "vue": "^2.5.16",
+    "vue-template-compiler": "^2.5.16",
+    "vue-toasted": "^1.1.24"
+  },
+  "devDependencies": {
+    "modern-normalize": "^0.4.0",
+    "poi": "^9.6.13",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
+  }
+}
