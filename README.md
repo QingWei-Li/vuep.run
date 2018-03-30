@@ -1,4 +1,4 @@
-# vuep.run
+# Vuep.run
 
 > 🏃 Online SFC editor for Vue
 
