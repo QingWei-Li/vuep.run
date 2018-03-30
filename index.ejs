@@ -20,5 +20,16 @@
   <div id="app"></div>
   <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.0.0-beta.42/babel.min.js"></script>
 </body>
+<% if (process.env.NODE_ENV === 'production') {%>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116670534-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-116670534-1');
+  </script>
+
+  <% } %>
 
 </html>
