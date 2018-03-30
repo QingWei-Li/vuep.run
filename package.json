@@ -9,7 +9,8 @@
     "build": "poi build"
   },
   "keywords": ["vue", "editor"],
-  "author": "",
+  "author": "qingwei-li <cinwell.li@gmail.com> (https://github.com/QingWei-Li)",
+  "repository": "QingWei-Li/vuep.run",
   "license": "MIT",
   "poi": {
     "devServer": {

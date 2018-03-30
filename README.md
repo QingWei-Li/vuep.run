@@ -45,6 +45,10 @@ Similar to `pkg` but for CSS files, such as `?pkg=element-ui&css=element-ui/lib/
 * CSS preprocessor
 * HTML preprocessor
 
+## Inspired
+
+* [Codepan](https://codepan.net)
+
 ## License
 
 MIT
