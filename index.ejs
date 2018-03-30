@@ -8,6 +8,16 @@
   <title>
     <%= htmlWebpackPlugin.options.title %>
   </title>
+  <style>
+    #app {
+      color: #2c3e50;
+      display: block;
+      text-align: center;
+      margin-top: 40vh;
+      font-size: 20px;
+      font-family: Arial, sans-serif;
+    }
+  </style>
   <% if (htmlWebpackPlugin.options.description) { %>
     <meta name="description" content="<%= htmlWebpackPlugin.options.description %>" />
     <% } %>
@@ -17,7 +27,7 @@
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
-  <div id="app"></div>
+  <div id="app">Loading...</div>
   <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.0.0-beta.42/babel.min.js"></script>
 </body>
 <% if (process.env.NODE_ENV === 'production') {%>
