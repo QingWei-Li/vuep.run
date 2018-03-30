@@ -36,7 +36,8 @@ export default {
 
     urls: [
       'https://vuep.run/QingWei-Li/vue-trend/docs/home.vue',
-      'https://vuep.run/QingWei-Li/vuep.run/examples/element-ui.vue?pkg=element-ui&css=element-ui/lib/theme-chalk/index.css'
+      'https://vuep.run/QingWei-Li/vuep.run/examples/element-ui.vue?pkg=element-ui&css=element-ui/lib/theme-chalk/index.css',
+      'http://localhost:4000/vuetifyjs/vuetifyjs.com/blob/dev/examples/ripples/navigationDrawers.vue?pkg=vuetify&css=vuetify/dist/vuetify.min.css'
     ]
   })
 }
@@ -69,11 +70,12 @@ export default {
         url = '//' + filename;
       } else {
         // convert url to github raw url
-        const repo = filename.match(/^([^\/]+\/[^\/]+)(\S+)$/);
-        url = `//raw.githubusercontent.com/${repo[1]}/master${repo[2].replace(
-          /\/blob\//,
-          '/'
-        )}`;
+        const repo = filename.match(/^([^\/]+\/[^\/]+)(\/blob\/([\w-]+))?(\S+)$/);
+        if (repo.length === 5) {
+          url = `//raw.githubusercontent.com/${repo[1]}/${repo[3]}${repo[4]}`;
+        } else {
+          url = `//raw.githubusercontent.com/${repo[1]}/master${repo[2]}`;
+        }
       }
 
       if (/github\.com\//.test(url)) {

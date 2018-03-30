@@ -24,6 +24,7 @@ import { parseComponent } from 'vue-template-compiler/browser';
 import { parse as queryParse } from 'query-string';
 import getImports from '@/utils/get-imports';
 import getPkgs from '@/utils/get-pkgs';
+import isAbsouteUrl from 'is-absolute-url';
 
 const CDN_MAP = {
   unpkg: '//unpkg.com/',
@@ -48,20 +49,23 @@ export default {
       const imports = [];
       const { template, script, styles } = parseComponent(code);
       let compiled;
+      const pkgs = [];
+      let scriptContent = 'exports = { default: {} }';
 
-      try {
-        compiled = window.Babel.transform(script.content, {
-          presets: ['es2015', 'es2016', 'es2017', 'stage-0'],
-          plugins: [[getImports, { imports }]]
-        });
-      } catch (e) {
-        this.preview = `<pre style="color: red">${e.message}</pre>`;
-        return;
+      if (script) {
+        try {
+          compiled = window.Babel.transform(script.content, {
+            presets: ['es2015', 'es2016', 'es2017', 'stage-0'],
+            plugins: [[getImports, { imports }]]
+          }).code;
+        } catch (e) {
+          this.preview = `<pre style="color: red">${e.message}</pre>`;
+          return;
+        }
+        scriptContent = await getPkgs(compiled, imports, pkgs);
       }
 
       const heads = this.genHeads();
-      const pkgs = [];
-      const scriptContent = await getPkgs(compiled.code, imports, pkgs);
       const scripts = [];
 
       pkgs.forEach(pkg => {
@@ -90,7 +94,7 @@ export default {
 
       this.preview = {
         head: heads.join('\n'),
-        body: `<div id="app"></div>` + scripts.join('\n')
+        body: '<div id="app"></div>' + scripts.join('\n')
       };
     },
 
@@ -123,8 +127,15 @@ export default {
       pkgs.unshift(vue);
 
       return [].concat(
-        pkgs.map(pkg => `<script src=${cdn}${pkg}><\/script>`),
-        styles.map(style => `<link rel=stylesheet href=${cdn}${style}>`)
+        pkgs.map(
+          pkg => `<script src=${isAbsouteUrl(pkg) ? '' : cdn}${pkg}><\/script>`
+        ),
+        styles.map(
+          style =>
+            `<link rel=stylesheet href=${
+              isAbsouteUrl(style) ? '' : cdn
+            }${style}>`
+        )
       );
     }
   }
