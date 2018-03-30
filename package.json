@@ -2,7 +2,7 @@
   "name": "vuep.run",
   "version": "1.0.0",
   "private": true,
-  "description": "🏃 Online SFCs editor for Vue",
+  "description": "🏃 Online SFC editor for Vue",
   "main": "src/main.js",
   "scripts": {
     "dev": "poi",
