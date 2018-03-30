@@ -1,6 +1,6 @@
 # Vuep.run
 
-> 🏃 Online SFC editor for Vue
+> 🏃 An online playground for Vue
 
 website: https://vuep.run
 

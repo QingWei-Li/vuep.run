@@ -1,15 +1,18 @@
 {
   "name": "vuep.run",
-  "productName": "Vuep.run",
+  "productName": "Vuep.run - An online playground for Vue",
   "version": "1.0.0",
   "private": true,
-  "description": "🏃 Online SFC editor for Vue",
+  "description": "🏃 An online playground for Vue",
   "main": "src/main.js",
   "scripts": {
     "dev": "poi",
     "build": "poi build"
   },
-  "keywords": ["vue", "editor"],
+  "keywords": [
+    "vue",
+    "editor"
+  ],
   "author": "qingwei-li <cinwell.li@gmail.com> (https://github.com/QingWei-Li)",
   "repository": "QingWei-Li/vuep.run",
   "license": "MIT",

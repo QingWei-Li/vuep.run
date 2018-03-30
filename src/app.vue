@@ -84,7 +84,7 @@ export default {
         component.template = component.template || ${JSON.stringify(
           template.content
         )}
-        
+
         new Vue(component).$mount('#app')
       <\/script>`);
 
@@ -140,6 +140,7 @@ export default {
   font-size 20px
   padding 0 20px
   display flex
+  color #2c3e50
 
 .list
   list-style none
