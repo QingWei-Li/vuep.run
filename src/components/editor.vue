@@ -71,7 +71,7 @@ export default {
       } else {
         // convert url to github raw url
         const repo = filename.match(/^([^\/]+\/[^\/]+)(\/blob\/([\w-]+))?(\S+)$/);
-        if (repo.length === 5) {
+        if (repo[3]) {
           url = `//raw.githubusercontent.com/${repo[1]}/${repo[3]}${repo[4]}`;
         } else {
           url = `//raw.githubusercontent.com/${repo[1]}/master${repo[2]}`;
