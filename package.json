@@ -1,5 +1,6 @@
 {
-  "name": "Vuep.run",
+  "name": "vuep.run",
+  "productName": "Vuep.run",
   "version": "1.0.0",
   "private": true,
   "description": "🏃 Online SFC editor for Vue",

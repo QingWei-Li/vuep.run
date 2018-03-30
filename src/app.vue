@@ -1,7 +1,7 @@
 <template>
   <section class="app">
     <nav class="navbar">
-      <span>vuep.run</span>
+      <span>Vuep.run</span>
 
       <ul class="list">
         <li>
