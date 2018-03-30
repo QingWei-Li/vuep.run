@@ -8,7 +8,7 @@ website: https://vuep.run
 
 ## Features
 
-* Serverless
+* No backend
 * Support ES modules
 * Load file from URL
 * Preload packages from `?pkg=`
