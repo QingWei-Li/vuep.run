@@ -70,12 +70,12 @@ export default {
         url = '//' + filename;
       } else {
         // convert url to github raw url
-        const repo = filename.match(/^([^\/]+\/[^\/]+)(\/blob\/([\w-]+))?(\S+)$/);
-        if (repo[3]) {
-          url = `//raw.githubusercontent.com/${repo[1]}/${repo[3]}${repo[4]}`;
-        } else {
-          url = `//raw.githubusercontent.com/${repo[1]}/master${repo[2]}`;
-        }
+        const repo = filename.match(
+          /^([^\/]+\/[^\/]+)(\/blob\/([\w-]+))?(\S+)$/
+        );
+        url = `//raw.githubusercontent.com/${repo[1]}/${repo[3] || 'master'}${
+          repo[4]
+        }`;
       }
 
       if (/github\.com\//.test(url)) {
