@@ -42,11 +42,6 @@ Vue version. The default is the latest version.
 
 Similar to `pkg` but for CSS files, such as `?pkg=element-ui&css=element-ui/lib/theme-chalk/index.css`
 
-## Roadmap
-
-* CSS preprocessor
-* HTML preprocessor
-
 ## Inspired
 
 * [Codepan](https://codepan.net)

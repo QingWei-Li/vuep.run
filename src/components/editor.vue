@@ -15,6 +15,7 @@ import 'codemirror/addon/edit/matchbrackets';
 import 'codemirror/mode/vue/vue';
 import { debounce } from 'throttle-debounce';
 import isAbsouteUrl from 'is-absolute-url';
+import { downloadURL } from '@/utils/store';
 
 emmet(CodeMirror);
 const defaultValue = `<template>
@@ -64,7 +65,9 @@ export default {
       this.$toasted.show('Loading file...');
 
       let url;
-      if (isAbsouteUrl(filename)) {
+      if (/^\w+$/.test(filename)) {
+        url = downloadURL(filename);
+      } else if (isAbsouteUrl(filename)) {
         url = filename;
       } else if (/^[\w-]+\.\w+/.test(filename)) {
         url = '//' + filename;

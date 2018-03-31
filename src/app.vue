@@ -8,6 +8,8 @@
           <a target="_blank" href="//github.com/qingwei-li/vuep.run">GitHub</a>
         </li>
       </ul>
+
+      <button @click="upload" class="save">Save</button>
     </nav>
 
     <main class="main">
@@ -25,6 +27,7 @@ import { parse as queryParse } from 'query-string';
 import getImports from '@/utils/get-imports';
 import getPkgs from '@/utils/get-pkgs';
 import isAbsouteUrl from 'is-absolute-url';
+import { upload } from '@/utils/store';
 
 const CDN_MAP = {
   unpkg: '//unpkg.com/',
@@ -38,11 +41,14 @@ export default {
   },
 
   data: () => ({
-    preview: ''
+    preview: '',
+    code: ''
   }),
 
   methods: {
     async compile(code) {
+      this.code = code;
+
       if (!code) {
         return;
       }
@@ -137,6 +143,18 @@ export default {
             }${style}>`
         )
       );
+    },
+
+    async upload() {
+      if (!this.code) {
+        this.$toasted('No content', {
+          type: 'error'
+        });
+        return;
+      }
+
+      const id = await upload(this.code);
+      history.pushState({}, '', id);
     }
   }
 };
@@ -152,6 +170,7 @@ export default {
   padding 0 20px
   display flex
   color #2c3e50
+  align-items center
 
 .list
   list-style none
@@ -162,6 +181,24 @@ export default {
     text-decoration none
     color #999
     font-size 16px
+
+.save
+  border-radius 4px
+  color #fff
+  border none
+  font-size 14px
+  height 30px
+  background #42b983
+  border-bottom 2px solid #349469
+  position absolute
+  right 20px
+  outline none
+
+  &:hover
+    opacity 0.8
+
+  &:active
+    background #349469
 
 .main
   display flex
