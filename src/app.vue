@@ -155,6 +155,18 @@ export default {
 
       const id = await upload(this.code);
       history.pushState({}, '', id);
+      const url = location.href;
+
+      this.$toasted.show(`Hosting in ${url}`, {
+        action: {
+          text: 'Copy',
+          onClick() {
+            copy(url);
+            Vue.toasted.clear();
+          }
+        },
+        duration: 5000
+      });
     }
   }
 };

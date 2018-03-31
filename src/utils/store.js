@@ -20,17 +20,6 @@ export async function upload(text) {
     });
 
     Vue.toasted.clear();
-    const url = location.href;
-    Vue.toasted.show(`Hosting in ${url}`, {
-      action: {
-        text: 'Copy',
-        onClick() {
-          copy(url);
-          Vue.toasted.clear();
-        }
-      },
-      duration: 5000
-    });
 
     return await result.text();
   } catch (e) {
