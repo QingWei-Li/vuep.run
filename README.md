@@ -8,17 +8,17 @@ website: https://vuep.run
 
 ## Features
 
-* No backend
 * Support ES modules
 * Load file from URL
 * Preload packages from `?pkg=`
+* Code hosting [demo](https://vuep.run/589869ae)
 
 ## Demo
 
 * https://vuep.run/QingWei-Li/vue-trend/docs/home.vue
 * https://vuep.run/QingWei-Li/vuep.run/examples/element-ui.vue?pkg=element-ui&css=element-ui/lib/theme-chalk/index.css
-* https://vuep.run/vuetifyjs/vuetifyjs.com/blob/dev/examples/ripples/navigationDrawers.vue?pkg=vuetify&css=vuetify/dist/vuetify.min.css
 * https://vuep.run/qingwei-li/laue/docs/_examples/quick-started.vue?pkg=laue
+* https://vuep.run/589869ae
 
 ## Params
 

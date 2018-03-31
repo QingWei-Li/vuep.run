@@ -8,7 +8,6 @@
           <a target="_blank" href="//github.com/qingwei-li/vuep.run">GitHub</a>
         </li>
       </ul>
-
       <button @click="upload" class="save">Save</button>
     </nav>
 
@@ -28,6 +27,7 @@ import getImports from '@/utils/get-imports';
 import getPkgs from '@/utils/get-pkgs';
 import isAbsouteUrl from 'is-absolute-url';
 import { upload } from '@/utils/store';
+import * as params from '@/utils/params';
 
 const CDN_MAP = {
   unpkg: '//unpkg.com/',
@@ -53,7 +53,14 @@ export default {
         return;
       }
       const imports = [];
-      const { template, script, styles } = parseComponent(code);
+      const { template, script, styles, customBlocks } = parseComponent(code);
+      let config;
+
+      if ((config = customBlocks.find(n => n.type === 'config'))) {
+        params.clear();
+        params.parse(config.content);
+      }
+
       let compiled;
       const pkgs = [];
       let scriptContent = 'exports = { default: {} }';
@@ -104,43 +111,26 @@ export default {
       };
     },
 
-    getArr(str) {
-      if (Array.isArray(str)) {
-        return str;
-      }
-      if (typeof str === 'string') {
-        return str.split(',');
-      }
-      return [];
-    },
-
-    getVue(version) {
-      if (version) {
-        return 'vue@' + version;
-      } else {
-        return 'vue';
-      }
-    },
-
     genHeads() {
       let heads = [];
-      const query = queryParse(location.search);
-      const pkgs = this.getArr(query.pkg);
-      const styles = this.getArr(query.css);
-      const cdn = CDN_MAP[query.cdn] || query.cdn || CDN_MAP.unpkg;
-      const vue = this.getVue(query.vue);
 
-      pkgs.unshift(vue);
+      params.queryParse(location.search);
+
+      const { pkgs, css, cdn, vue } = params.get();
+      const prefix = CDN_MAP[cdn] || CDN_MAP.unpkg;
 
       return [].concat(
-        pkgs.map(
-          pkg => `<script src=${isAbsouteUrl(pkg) ? '' : cdn}${pkg}><\/script>`
-        ),
-        styles.map(
-          style =>
+        []
+          .concat(vue ? 'vue@' + vue : 'vue', pkgs)
+          .map(
+            pkg =>
+              `<script src=${isAbsouteUrl(pkg) ? '' : prefix}${pkg}><\/script>`
+          ),
+        css.map(
+          item =>
             `<link rel=stylesheet href=${
-              isAbsouteUrl(style) ? '' : cdn
-            }${style}>`
+              isAbsouteUrl(item) ? '' : prefix
+            }${item}>`
         )
       );
     },
@@ -154,7 +144,7 @@ export default {
       }
 
       const id = await upload(this.code);
-      history.pushState({}, '', id);
+      history.pushState({}, '', '/' + id);
       const url = location.href;
 
       this.$toasted.show(`Hosting in ${url}`, {
