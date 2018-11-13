@@ -2,7 +2,7 @@
 
 > 🏃 An online playground for Vue
 
-website: https://vuep.run
+website: https://vuep.netlify.com
 
 ![image](https://user-images.githubusercontent.com/7565692/38162374-906003e4-3512-11e8-8780-a22350a665fc.png)
 
@@ -11,18 +11,18 @@ website: https://vuep.run
 * Support ES modules
 * Load file from URL
 * Preload packages from `?pkg=`
-* Code hosting [demo](https://vuep.run/589869ae)
+* Code hosting [demo](https://vuep.netlify.com/589869ae)
 
 ## Demo
 
-* https://vuep.run/QingWei-Li/vue-trend/docs/home.vue
-* https://vuep.run/QingWei-Li/vuep.run/examples/element-ui.vue?pkg=element-ui&css=element-ui/lib/theme-chalk/index.css
-* https://vuep.run/qingwei-li/laue/docs/_examples/quick-started.vue?pkg=laue
-* https://vuep.run/589869ae
+* https://vuep.netlify.com/QingWei-Li/vue-trend/docs/home.vue
+* https://vuep.netlify.com/QingWei-Li/vuep.run/examples/element-ui.vue?pkg=element-ui&css=element-ui/lib/theme-chalk/index.css
+* https://vuep.netlify.com/qingwei-li/laue/docs/_examples/quick-started.vue?pkg=laue
+* https://vuep.netlify.com/589869ae
 
 ## Params
 
-* `https://vuep.run/[:url]`
+* `https://vuep.netlify.com/[:url]`
 
 Absolute url or short url for GitHub like `:username/:repo/:file`
 
