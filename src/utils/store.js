@@ -2,7 +2,7 @@ import Vue from 'vue';
 import copy from 'copy-text-to-clipboard';
 import { stringify } from 'query-string';
 
-const API = 'https://text.cinwell.com';
+const API = 'https://text.cinwell.xyz';
 
 export async function upload(text) {
   Vue.toasted.show('Saving...');
