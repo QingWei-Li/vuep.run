@@ -121,7 +121,7 @@ export default {
 
       return [].concat(
         []
-          .concat(vue ? 'vue@' + vue : 'vue', pkgs)
+          .concat(vue ? 'vue@' + vue : 'vue@2', pkgs)
           .map(
             pkg =>
               `<script src=${isAbsouteUrl(pkg) ? '' : prefix}${pkg}><\/script>`
